@@ -1,0 +1,10 @@
+__pycache__
+*.pyc
+results/
+run/
+runs/
+weights/
+data/
+stableguard/weights/*
+not_used/*
+Docs/

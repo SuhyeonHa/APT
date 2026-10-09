@@ -1,0 +1,40 @@
+src_image_path: "./data/valAGE-Set"
+edit_model_name: "sd-legacy/stable-diffusion-inpainting"
+seed: 42
+eval_size: 256
+target_model: "apt" # ["omniguard", "wam", "stableguard", "apt"]
+save_path: "./runs/eval/apt"
+start_idx: 0
+end_idx: 100
+tamper_mode: "ldm"
+
+weight_paths:
+  omniguard: "./weights/omniguard/"
+  wam: "./weights/wam/"
+  stableguard: "./weights/stableguard/weights/clean"
+  apt: "./weights"
+
+normalization:
+  omniguard: "rescale"
+  wam: "imagenet"
+  stableguard: "rescale"
+  apt: "rescale" # doesn't matter
+
+num_bits:
+  omniguard: 64
+  wam: 32
+  stableguard: 48
+  apt: 0
+
+train_img_size:
+  omniguard: 512
+  wam: 256
+  stableguard: 256
+  apt: 256
+
+# Watermark strength (shared across models)
+# WAM default: 2.0, OmniGuard default: 1.0
+wm_strength: 1.0
+
+# apt only: True -> APT*; False -> APT
+use_refiner: true
